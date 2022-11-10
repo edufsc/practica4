@@ -1,7 +1,6 @@
 package app.banco.db;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 import java.sql.ResultSet;
@@ -17,12 +16,7 @@ public class DatabaseGestor {
 	// al conectar la base de datos en el constructor (como atributo),
 	// la podemos utilizar desde todos los métodos de la clase
 	public DatabaseGestor() {
-		try {
-			// conecta con la base de datos
-			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/banco", "banco", "banco");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		this.conexion = new DatabaseConnection().getConexion();
 	}
 
 	// si inserta el gestor devuelve true, si no, false
